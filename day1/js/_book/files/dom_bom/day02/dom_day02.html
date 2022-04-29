@@ -1,0 +1,945 @@
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <!-- Start book JavaScript阶段笔记 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>排他思想、自定义属性、节点操作 | JavaScript阶段笔记</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="杨聂">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-back-to-top-button/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-code/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-advanced-emoji/emoji-website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-emphasize/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../../gitbook/plugins/gitbook-plugin-prism/prism.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../../files/dom_bom/day03/dom_day03.html" />
+    
+    
+    <link rel="prev" href="../../../files/dom_bom/day01/dom_day01.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="3.2"
+        data-chapter-title="排他思想、自定义属性、节点操作"
+        data-filepath="files/dom_bom/day02/dom_day02.md"
+        data-basepath="../../.."
+        data-revision="Tue Oct 19 2021 10:32:59 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="files/JavaScript.html">
+            
+                
+                    <a href="../../../files/JavaScript.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        资料
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="files/title_link/index_jc.html">
+            
+                
+                    <a href="../../../files/title_link/index_jc.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        JavaScript基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="files/base/day01/JavaScript基础第01天笔记.html">
+            
+                
+                    <a href="../../../files/base/day01/JavaScript基础第01天笔记.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        JS概念、变量、数据类型及转换
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="files/base/day02/JavaScript基础第02天笔记.html">
+            
+                
+                    <a href="../../../files/base/day02/JavaScript基础第02天笔记.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        运算符、流程控制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="files/base/day03/JavaScript基础第03天笔记.html">
+            
+                
+                    <a href="../../../files/base/day03/JavaScript基础第03天笔记.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        循环、代码规范
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="files/base/day04/JavaScript基础第04天笔记.html">
+            
+                
+                    <a href="../../../files/base/day04/JavaScript基础第04天笔记.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        数组、函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="files/base/day05/JavaScript基础第05天笔记.html">
+            
+                
+                    <a href="../../../files/base/day05/JavaScript基础第05天笔记.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        堆栈、作用域、执行环境、预解析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="files/base/day06/day06.html">
+            
+                
+                    <a href="../../../files/base/day06/day06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        IIFE、回调、递归、对象
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="files/base/day07/day07.html">
+            
+                
+                    <a href="../../../files/base/day07/day07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        this、new、原型、原型链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="files/base/day08/day08.html">
+            
+                
+                    <a href="../../../files/base/day08/day08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        JSON、Math、日期、时间、数组、字符串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="files/base/day09/day09.html">
+            
+                
+                    <a href="../../../files/base/day09/day09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                        正则表达式
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="files/title_link/index_dombom.html">
+            
+                
+                    <a href="../../../files/title_link/index_dombom.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        DOM、BOM
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="files/dom_bom/day01/dom_day01.html">
+            
+                
+                    <a href="../../../files/dom_bom/day01/dom_day01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        API、DOM、元素对象、事件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2" data-path="files/dom_bom/day02/dom_day02.html">
+            
+                
+                    <a href="../../../files/dom_bom/day02/dom_day02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        排他思想、自定义属性、节点操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="files/dom_bom/day03/dom_day03.html">
+            
+                
+                    <a href="../../../files/dom_bom/day03/dom_day03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        节点操作、创建元素、事件高级
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="files/dom_bom/day04/bom_day04.html">
+            
+                
+                    <a href="../../../files/dom_bom/day04/bom_day04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        键盘事件、BOM、定时器、js执行机制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="files/dom_bom/day05/bom_day05.html">
+            
+                
+                    <a href="../../../files/dom_bom/day05/bom_day05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        元素偏移、可视区client、元素滚动scroll
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="files/dom_bom/day06/bom_day06.html">
+            
+                
+                    <a href="../../../files/dom_bom/day06/bom_day06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        节流阀、触屏事件
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="files/title_link/index_senior.html">
+            
+                
+                    <a href="../../../files/title_link/index_senior.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        js高级
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="files/js高级/day01/高级day01.html">
+            
+                
+                    <a href="../../../files/js高级/day01/高级day01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        基础内容扩展、闭包
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="files/js高级/day02/高级day02.html">
+            
+                
+                    <a href="../../../files/js高级/day02/高级day02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        终级原型链、面向对象特性、进程与线程、深浅拷贝
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="files/js高级/day03/高级day03.html">
+            
+                
+                    <a href="../../../files/js高级/day03/高级day03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        公有私有静态特权、事件轮询、节流防抖、文档碎片节点
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本书使用 GitBook 发布
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../../" >JavaScript阶段笔记</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="domday02">DOM-day02</h1>
+<blockquote>
+<p>&#x8BFE;&#x7A0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<ul>
+<li>&#x6392;&#x4ED6;&#x601D;&#x60F3;</li>
+</ul>
+<ul>
+<li>&#x64CD;&#x4F5C;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;</li>
+</ul>
+<ul>
+<li>&#x8282;&#x70B9;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;</li>
+</ul>
+</blockquote>
+<h2 id="1-&#x6392;&#x4ED6;&#x64CD;&#x4F5C;">1. &#x6392;&#x4ED6;&#x64CD;&#x4F5C;</h2>
+<h3 id="11-&#x6392;&#x4ED6;&#x601D;&#x60F3;">1.1 &#x6392;&#x4ED6;&#x601D;&#x60F3;</h3>
+<p><img src="images/1550914482628.png" alt="1550914482628"></p>
+<p>&#x5982;&#x679C;&#x6709;&#x540C;&#x4E00;&#x7EC4;&#x5143;&#x7D20;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x67D0;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x5B9E;&#x73B0;&#x67D0;&#x79CD;&#x6837;&#x5F0F;&#xFF0C; &#x9700;&#x8981;&#x7528;&#x5230;&#x5FAA;&#x73AF;&#x7684;&#x6392;&#x4ED6;&#x601D;&#x60F3;&#x7B97;&#x6CD5;&#xFF1A;</p>
+<ol>
+<li><p>&#x6240;&#x6709;&#x5143;&#x7D20;&#x5168;&#x90E8;&#x6E05;&#x9664;&#x6837;&#x5F0F;&#xFF08;&#x5E72;&#x6389;&#x5176;&#x4ED6;&#x4EBA;&#xFF09;</p>
+</li>
+<li><p>&#x7ED9;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x8BBE;&#x7F6E;&#x6837;&#x5F0F; &#xFF08;&#x7559;&#x4E0B;&#x6211;&#x81EA;&#x5DF1;&#xFF09;</p>
+</li>
+<li><p>&#x6CE8;&#x610F;&#x987A;&#x5E8F;&#x4E0D;&#x80FD;&#x98A0;&#x5012;&#xFF0C;&#x9996;&#x5148;&#x5E72;&#x6389;&#x5176;&#x4ED6;&#x4EBA;&#xFF0C;&#x518D;&#x8BBE;&#x7F6E;&#x81EA;&#x5DF1;</p>
+</li>
+</ol>
+<pre><code class="lang-js">    <span class="token operator">&lt;</span>button<span class="token operator">&gt;</span>&#x6309;&#x94AE;<span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button<span class="token operator">&gt;</span>&#x6309;&#x94AE;<span class="token number">2</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button<span class="token operator">&gt;</span>&#x6309;&#x94AE;<span class="token number">3</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button<span class="token operator">&gt;</span>&#x6309;&#x94AE;<span class="token number">4</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button<span class="token operator">&gt;</span>&#x6309;&#x94AE;<span class="token number">5</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+        <span class="token comment">// 1. &#x83B7;&#x53D6;&#x6240;&#x6709;&#x6309;&#x94AE;&#x5143;&#x7D20;</span>
+        <span class="token keyword">var</span> btns <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">&apos;button&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// btns&#x5F97;&#x5230;&#x7684;&#x662F;&#x4F2A;&#x6570;&#x7EC4;  &#x91CC;&#x9762;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20; btns[i]</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> btns<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            btns<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// (1) &#x6211;&#x4EEC;&#x5148;&#x628A;&#x6240;&#x6709;&#x7684;&#x6309;&#x94AE;&#x80CC;&#x666F;&#x989C;&#x8272;&#x53BB;&#x6389;  &#x5E72;&#x6389;&#x6240;&#x6709;&#x4EBA;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> btns<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    btns<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">&apos;&apos;</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token comment">// (2) &#x7136;&#x540E;&#x624D;&#x8BA9;&#x5F53;&#x524D;&#x7684;&#x5143;&#x7D20;&#x80CC;&#x666F;&#x989C;&#x8272;&#x4E3A;aqua</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">&apos;aqua&apos;</span><span class="token punctuation">;</span>
+
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<h2 id="2-&#x6848;&#x4F8B;">2. &#x6848;&#x4F8B;</h2>
+<h3 id="21-&#x7F51;&#x9875;&#x6362;&#x80A4;">2.1 &#x7F51;&#x9875;&#x6362;&#x80A4;</h3>
+<p><img src="images/1550914640677.png" alt="1550914640677"></p>
+<p><img src="images/1550914663042.png" alt="1550914663042"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>body<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>ul <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;baidu&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">&quot;images/1.jpg&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">&quot;images/2.jpg&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">&quot;images/3.jpg&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span><span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">&quot;images/4.jpg&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+        <span class="token comment">// 1. &#x83B7;&#x53D6;&#x5143;&#x7D20; </span>
+        <span class="token keyword">var</span> imgs <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;.baidu&apos;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">&apos;img&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// console.log(imgs);</span>
+        <span class="token comment">// 2. &#x5FAA;&#x73AF;&#x6CE8;&#x518C;&#x4E8B;&#x4EF6; </span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> imgs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            imgs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// this.src &#x5C31;&#x662F;&#x6211;&#x4EEC;&#x70B9;&#x51FB;&#x56FE;&#x7247;&#x7684;&#x8DEF;&#x5F84;   images/2.jpg</span>
+                <span class="token comment">// console.log(this.src);</span>
+                <span class="token comment">// &#x628A;&#x8FD9;&#x4E2A;&#x8DEF;&#x5F84; this.src &#x7ED9;body &#x5C31;&#x53EF;&#x4EE5;&#x4E86;</span>
+                document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundImage <span class="token operator">=</span> <span class="token string">&apos;url(&apos;</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>src <span class="token operator">+</span> <span class="token string">&apos;)&apos;</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="22-&#x8868;&#x683C;&#x9009;&#x4E2D;&#x884C;&#x53D8;&#x8272;">2.2 &#x8868;&#x683C;&#x9009;&#x4E2D;&#x884C;&#x53D8;&#x8272;</h3>
+<p><img src="images/1550914791881.png" alt="1550914791881"></p>
+<p><img src="images/1550914812202.png" alt="1550914812202"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token comment">// 1.&#x83B7;&#x53D6;&#x5143;&#x7D20; &#x83B7;&#x53D6;&#x7684;&#x662F; tbody &#x91CC;&#x9762;&#x6240;&#x6709;&#x7684;&#x884C;</span>
+    <span class="token keyword">var</span> trs <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;tbody&apos;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">&apos;tr&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 2. &#x5229;&#x7528;&#x5FAA;&#x73AF;&#x7ED1;&#x5B9A;&#x6CE8;&#x518C;&#x4E8B;&#x4EF6;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> trs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 3. &#x9F20;&#x6807;&#x7ECF;&#x8FC7;&#x4E8B;&#x4EF6; onmouseover</span>
+        trs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onmouseover</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">&apos;bg&apos;</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 4. &#x9F20;&#x6807;&#x79BB;&#x5F00;&#x4E8B;&#x4EF6; onmouseout</span>
+        trs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onmouseout</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">&apos;&apos;</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="23-&#x5168;&#x9009;">2.3 &#x5168;&#x9009;</h3>
+<p><img src="images/1550914980274.png" alt="1550914980274"></p>
+<p><img src="images/1550915005393.png" alt="1550915005393"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token comment">// 1. &#x5168;&#x9009;&#x548C;&#x53D6;&#x6D88;&#x5168;&#x9009;&#x505A;&#x6CD5;&#xFF1A;  &#x8BA9;&#x4E0B;&#x9762;&#x6240;&#x6709;&#x590D;&#x9009;&#x6846;&#x7684;checked&#x5C5E;&#x6027;&#xFF08;&#x9009;&#x4E2D;&#x72B6;&#x6001;&#xFF09; &#x8DDF;&#x968F; &#x5168;&#x9009;&#x6309;&#x94AE;&#x5373;&#x53EF;</span>
+    <span class="token comment">// &#x83B7;&#x53D6;&#x5143;&#x7D20;</span>
+    <span class="token keyword">var</span> j_cbAll <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&apos;j_cbAll&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token keyword">var</span> j_tbs <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&apos;j_tb&apos;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">&apos;input&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token comment">// &#x5168;&#x9009;&#x6309;&#x94AE;&#x6CE8;&#x518C;&#x4E8B;&#x4EF6;</span>
+    j_cbAll<span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// this.checked &#x5F53;&#x524D;&#x590D;&#x9009;&#x6846;&#x7684;&#x9009;&#x4E2D;&#x72B6;&#x6001;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>checked<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> j_tbs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            j_tbs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>checked <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>checked<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// &#x7ED9;&#x6240;&#x6709;&#x7684;&#x5B50;&#x590D;&#x9009;&#x6846;&#x6CE8;&#x518C;&#x5355;&#x51FB;&#x4E8B;&#x4EF6;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> j_tbs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        j_tbs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// flag &#x63A7;&#x5236;&#x5168;&#x9009;&#x6309;&#x94AE;&#x662F;&#x5426;&#x9009;&#x4E2D;</span>
+            <span class="token keyword">var</span> flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token comment">// &#x6BCF;&#x6B21;&#x70B9;&#x51FB;&#x4E0B;&#x9762;&#x7684;&#x590D;&#x9009;&#x6846;&#x90FD;&#x8981;&#x5FAA;&#x73AF;&#x68C0;&#x67E5;&#x8005;4&#x4E2A;&#x5C0F;&#x6309;&#x94AE;&#x662F;&#x5426;&#x5168;&#x88AB;&#x9009;&#x4E2D;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> j_tbs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>j_tbs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>checked<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    flag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span> 
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// &#x8BBE;&#x7F6E;&#x5168;&#x9009;&#x6309;&#x94AE;&#x7684;&#x72B6;&#x6001;</span>
+            j_cbAll<span class="token punctuation">.</span>checked <span class="token operator">=</span> flag<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<h2 id="3-&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;">3. &#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;</h2>
+<h3 id="31-&#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x503C;">3.1 &#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x503C;</h3>
+<p><img src="images/1550915376339.png" alt="1550915376339"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">&quot;demo&quot;</span> index<span class="token operator">=</span><span class="token string">&quot;1&quot;</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;nav&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;div&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 1. &#x83B7;&#x53D6;&#x5143;&#x7D20;&#x7684;&#x5C5E;&#x6027;&#x503C;</span>
+    <span class="token comment">// (1) element.&#x5C5E;&#x6027;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//(2) element.getAttribute(&apos;&#x5C5E;&#x6027;&apos;)  get&#x5F97;&#x5230;&#x83B7;&#x53D6;attribute&#x5C5E;&#x6027;&#x7684;&#x610F;&#x601D; &#x6211;&#x4EEC;&#x7A0B;&#x5E8F;&#x5458;&#x81EA;&#x5DF1;&#x6DFB;&#x52A0;&#x7684;&#x5C5E;&#x6027;&#x6211;&#x4EEC;&#x79F0;&#x4E3A;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027; index</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;id&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;index&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="32-&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x503C;">3.2. &#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x503C;</h3>
+<p>&#x200B;        <img src="images/1550915445026.png" alt="1550915445026">    </p>
+<pre><code class="lang-js"><span class="token comment">// 2. &#x8BBE;&#x7F6E;&#x5143;&#x7D20;&#x5C5E;&#x6027;&#x503C;</span>
+<span class="token comment">// (1) element.&#x5C5E;&#x6027;= &apos;&#x503C;&apos;</span>
+div<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token string">&apos;test&apos;</span><span class="token punctuation">;</span>
+div<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">&apos;navs&apos;</span><span class="token punctuation">;</span>
+<span class="token comment">// (2) element.setAttribute(&apos;&#x5C5E;&#x6027;&apos;, &apos;&#x503C;&apos;);  &#x4E3B;&#x8981;&#x9488;&#x5BF9;&#x4E8E;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;</span>
+div<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;index&apos;</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+div<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;class&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;footer&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// class &#x7279;&#x6B8A;  &#x8FD9;&#x91CC;&#x9762;&#x5199;&#x7684;&#x5C31;&#x662F;</span>
+</code></pre>
+<h3 id="33-&#x79FB;&#x9664;&#x5C5E;&#x6027;">3.3. &#x79FB;&#x9664;&#x5C5E;&#x6027;</h3>
+<p><img src="images/1550915513137.png" alt="1550915513137"></p>
+<pre><code class="lang-js"><span class="token comment">// class &#x4E0D;&#x662F;className</span>
+<span class="token comment">// 3 &#x79FB;&#x9664;&#x5C5E;&#x6027; removeAttribute(&#x5C5E;&#x6027;)    </span>
+div<span class="token punctuation">.</span><span class="token function">removeAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;index&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="34-&#x6848;&#x4F8B;&#xFF1A;tab&#x680F;">3.4. &#x6848;&#x4F8B;&#xFF1A;tab&#x680F;</h3>
+<p><img src="images/1550915567627.png" alt="1550915567627"></p>
+<p><img src="images/1550915590707.png" alt="1550915590707"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token comment">// &#x83B7;&#x53D6;&#x5143;&#x7D20;</span>
+    <span class="token keyword">var</span> tab_list <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;.tab_list&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> lis <span class="token operator">=</span> tab_list<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">&apos;li&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> items <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">&apos;.item&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// for&#x5FAA;&#x73AF;&#xFF0C;&#x7ED9;&#x9009;&#x9879;&#x5361;&#x7ED1;&#x5B9A;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> lis<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// &#x5F00;&#x59CB;&#x7ED9;5&#x4E2A;&#x5C0F;li &#x8BBE;&#x7F6E;&#x7D22;&#x5F15;&#x53F7; </span>
+        lis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;index&apos;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        lis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 1. &#x4E0A;&#x7684;&#x6A21;&#x5757;&#x9009;&#x9879;&#x5361;&#xFF0C;&#x5F53;&#x524D;&#x8FD9;&#x4E00;&#x4E2A;&#x5E95;&#x8272;&#x4F1A;&#x662F;&#x7EA2;&#x8272;&#xFF0C;&#x5176;&#x4F59;&#x4E0D;&#x53D8;&#xFF08;&#x6392;&#x4ED6;&#x601D;&#x60F3;&#xFF09;</span>
+            <span class="token comment">// &#x5E72;&#x6389;&#x6240;&#x6709;&#x4EBA; &#x5176;&#x4F59;&#x7684;li&#x6E05;&#x9664; class &#x8FD9;&#x4E2A;&#x7C7B;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> lis<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                lis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">&apos;&apos;</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// &#x7559;&#x4E0B;&#x6211;&#x81EA;&#x5DF1; </span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">&apos;current&apos;</span><span class="token punctuation">;</span>
+            <span class="token comment">// 2. &#x4E0B;&#x9762;&#x7684;&#x663E;&#x793A;&#x5185;&#x5BB9;&#x6A21;&#x5757;</span>
+            <span class="token keyword">var</span> index <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;index&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// &#x5E72;&#x6389;&#x6240;&#x6709;&#x4EBA; &#x8BA9;&#x5176;&#x4F59;&#x7684;item &#x8FD9;&#x4E9B;div &#x9690;&#x85CF;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> items<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                items<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">&apos;none&apos;</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// &#x7559;&#x4E0B;&#x6211;&#x81EA;&#x5DF1; &#x8BA9;&#x5BF9;&#x5E94;&#x7684;item &#x663E;&#x793A;&#x51FA;&#x6765;</span>
+            items<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">&apos;block&apos;</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="35-h5&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;">3.5. H5&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;</h3>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x76EE;&#x7684;&#xFF1A;&#x662F;&#x4E3A;&#x4E86;&#x4FDD;&#x5B58;&#x5E76;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x3002;&#x6709;&#x4E9B;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;&#x5230;&#x9875;&#x9762;&#x4E2D;&#x800C;&#x4E0D;&#x7528;&#x4FDD;&#x5B58;&#x5230;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x3002;</p>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x83B7;&#x53D6;&#x662F;&#x901A;&#x8FC7;getAttribute(&apos;&#x5C5E;&#x6027;&apos;) &#x83B7;&#x53D6;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x6709;&#x4E9B;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x5F88;&#x5BB9;&#x6613;&#x5F15;&#x8D77;&#x6B67;&#x4E49;&#xFF0C;&#x4E0D;&#x5BB9;&#x6613;&#x5224;&#x65AD;&#x662F;&#x5143;&#x7D20;&#x7684;&#x5185;&#x7F6E;&#x5C5E;&#x6027;&#x8FD8;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x3002;</p>
+<p>H5&#x7ED9;&#x6211;&#x4EEC;&#x65B0;&#x589E;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#xFF1A;</p>
+<p><img src="images/1550915798516.png" alt="1550915798516"></p>
+<p>&#x200B;    &#x6216;&#x8005;</p>
+<p>&#x200B;    element.dataset.index = 1;</p>
+<p><img src="images/1550915815571.png" alt="1550915815571"></p>
+<p>&#x65B9;&#x6CD5;&#x4E00;&#x517C;&#x5BB9;&#x6027;&#x597D;&#xFF0C;&#x5E38;&#x7528;&#xFF1B;&#x65B9;&#x6CD5;&#x4E8C;&#x6709;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x53EA;&#x80FD;&#x83B7;&#x53D6;&#x4EE5; data- &#x5F00;&#x5934;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x3002;</p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>div getTime<span class="token operator">=</span><span class="token string">&quot;20&quot;</span> data<span class="token operator">-</span>index<span class="token operator">=</span><span class="token string">&quot;2&quot;</span> data<span class="token operator">-</span>list<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">&quot;andy&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;div&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// console.log(div.getTime);</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;getTime&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    div<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;data-time&apos;</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;data-index&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">&apos;data-list-name&apos;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// h5&#x65B0;&#x589E;&#x7684;&#x83B7;&#x53D6;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x7684;&#x65B9;&#x6CD5; &#x5B83;&#x53EA;&#x80FD;&#x83B7;&#x53D6;data-&#x5F00;&#x5934;&#x7684;</span>
+    <span class="token comment">// dataset &#x662F;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#x91CC;&#x9762;&#x5B58;&#x653E;&#x4E86;&#x6240;&#x6709;&#x4EE5;data&#x5F00;&#x5934;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span>dataset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span>dataset<span class="token punctuation">[</span><span class="token string">&apos;index&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// &#x5982;&#x679C;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#x91CC;&#x9762;&#x6709;&#x591A;&#x4E2A;-&#x94FE;&#x63A5;&#x7684;&#x5355;&#x8BCD;&#xFF0C;&#x6211;&#x4EEC;&#x83B7;&#x53D6;&#x7684;&#x65F6;&#x5019;&#x91C7;&#x53D6; &#x9A7C;&#x5CF0;&#x547D;&#x540D;&#x6CD5;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>listName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span>dataset<span class="token punctuation">[</span><span class="token string">&apos;listName&apos;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<h2 id="4-&#x8282;&#x70B9;&#x64CD;&#x4F5C;">4. &#x8282;&#x70B9;&#x64CD;&#x4F5C;</h2>
+<h3 id="41-&#x8282;&#x70B9;&#x6982;&#x8FF0;">4.1. &#x8282;&#x70B9;&#x6982;&#x8FF0;</h3>
+<p>&#x200B;    &#x7F51;&#x9875;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x90FD;&#x662F;&#x8282;&#x70B9;&#xFF08;&#x6807;&#x7B7E;&#x3001;&#x5C5E;&#x6027;&#x3001;&#x6587;&#x672C;&#x3001;&#x6CE8;&#x91CA;&#x7B49;&#xFF09;&#xFF0C;&#x5728;DOM &#x4E2D;&#xFF0C;&#x8282;&#x70B9;&#x4F7F;&#x7528; node &#x6765;&#x8868;&#x793A;&#x3002;</p>
+<p>&#x200B;    HTML DOM &#x6811;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#x5747;&#x53EF;&#x901A;&#x8FC7; JavaScript &#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#xFF0C;&#x6240;&#x6709; HTML &#x5143;&#x7D20;&#xFF08;&#x8282;&#x70B9;&#xFF09;&#x5747;&#x53EF;&#x88AB;&#x4FEE;&#x6539;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x6216;&#x5220;&#x9664;&#x3002;</p>
+<p><img src="images/1550970944363.png" alt="1550970944363"></p>
+<p>&#x200B;    &#x4E00;&#x822C;&#x5730;&#xFF0C;&#x8282;&#x70B9;&#x81F3;&#x5C11;&#x62E5;&#x6709;nodeType&#xFF08;&#x8282;&#x70B9;&#x7C7B;&#x578B;&#xFF09;&#x3001;nodeName&#xFF08;&#x8282;&#x70B9;&#x540D;&#x79F0;&#xFF09;&#x548C;nodeValue&#xFF08;&#x8282;&#x70B9;&#x503C;&#xFF09;&#x8FD9;&#x4E09;&#x4E2A;&#x57FA;&#x672C;&#x5C5E;&#x6027;&#x3002;</p>
+<p><img src="images/1550970986988.png" alt="1550970986988"></p>
+<h3 id="42-&#x8282;&#x70B9;&#x5C42;&#x7EA7;">4.2. &#x8282;&#x70B9;&#x5C42;&#x7EA7;</h3>
+<p>&#x200B;    &#x5229;&#x7528; DOM &#x6811;&#x53EF;&#x4EE5;&#x628A;&#x8282;&#x70B9;&#x5212;&#x5206;&#x4E3A;&#x4E0D;&#x540C;&#x7684;&#x5C42;&#x7EA7;&#x5173;&#x7CFB;&#xFF0C;&#x5E38;&#x89C1;&#x7684;&#x662F;<strong>&#x7236;&#x5B50;&#x5144;&#x5C42;&#x7EA7;&#x5173;&#x7CFB;</strong>&#x3002;</p>
+<p>&#x200B;    <img src="images/1550971058781.png" alt="1550971058781"></p>
+<h3 id="43-&#x7236;&#x7EA7;&#x8282;&#x70B9;">4.3. &#x7236;&#x7EA7;&#x8282;&#x70B9;</h3>
+<p><img src="images/1550971196686.png" alt="1550971196686"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;demo&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;box&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;erweima&quot;</span><span class="token operator">&gt;</span>&#xD7;<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token comment">// 1. &#x7236;&#x8282;&#x70B9; parentNode</span>
+    <span class="token keyword">var</span> erweima <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;.erweima&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// var box = document.querySelector(&apos;.box&apos;);</span>
+    <span class="token comment">// &#x5F97;&#x5230;&#x7684;&#x662F;&#x79BB;&#x5143;&#x7D20;&#x6700;&#x8FD1;&#x7684;&#x7236;&#x7EA7;&#x8282;&#x70B9;(&#x4EB2;&#x7238;&#x7238;) &#x5982;&#x679C;&#x627E;&#x4E0D;&#x5230;&#x7236;&#x8282;&#x70B9;&#x5C31;&#x8FD4;&#x56DE;&#x4E3A; null</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>erweima<span class="token punctuation">.</span>parentNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="44-&#x5B50;&#x8282;&#x70B9;">4.4. &#x5B50;&#x8282;&#x70B9;</h3>
+<p><strong>&#x6240;&#x6709;&#x5B50;&#x8282;&#x70B9;</strong></p>
+<p><img src="images/1550971263925.png" alt="1550971263925"></p>
+<p><strong>&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9;</strong></p>
+<p><img src="images/1550971325828.png" alt="1550971325828"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>ul<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>&#x6211;&#x662F;li<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>&#x6211;&#x662F;li<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>&#x6211;&#x662F;li<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>&#x6211;&#x662F;li<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token comment">// DOM &#x63D0;&#x4F9B;&#x7684;&#x65B9;&#x6CD5;&#xFF08;API&#xFF09;&#x83B7;&#x53D6;</span>
+    <span class="token keyword">var</span> ul <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;ul&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> lis <span class="token operator">=</span> ul<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">&apos;li&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 1. &#x5B50;&#x8282;&#x70B9;  childNodes &#x6240;&#x6709;&#x7684;&#x5B50;&#x8282;&#x70B9; &#x5305;&#x542B; &#x5143;&#x7D20;&#x8282;&#x70B9; &#x6587;&#x672C;&#x8282;&#x70B9;&#x7B49;&#x7B49;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ul<span class="token punctuation">.</span>childNodes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ul<span class="token punctuation">.</span>childNodes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>nodeType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ul<span class="token punctuation">.</span>childNodes<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>nodeType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 2. children &#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9; &#x4E5F;&#x662F;&#x6211;&#x4EEC;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x5E38;&#x7528;&#x7684;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ul<span class="token punctuation">.</span>children<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<p><strong>&#x7B2C;1&#x4E2A;&#x5B50;&#x8282;&#x70B9;</strong></p>
+<p><img src="images/1550971774758.png" alt="1550971774758"></p>
+<p><strong>&#x6700;&#x540E;1&#x4E2A;&#x5B50;&#x8282;&#x70B9;</strong></p>
+<p><img src="images/1550971825493.png" alt="1550971825493"></p>
+<p><strong>&#x7B2C;1&#x4E2A;&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9;</strong></p>
+<p><img src="images/1550972014509.png" alt="1550972014509"></p>
+<p><strong>&#x6700;&#x540E;1&#x4E2A;&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9;</strong></p>
+<p><img src="images/1550972106485.png" alt="1550972106485"></p>
+<p>&#x200B;    &#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;firstChild &#x548C; lastChild &#x5305;&#x542B;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#xFF0C;&#x64CD;&#x4F5C;&#x4E0D;&#x65B9;&#x4FBF;&#xFF0C;&#x800C; firstElementChild &#x548C; lastElementChild &#x53C8;&#x6709;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x83B7;&#x53D6;&#x7B2C;&#x4E00;&#x4E2A;&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x6216;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x5462;&#xFF1F;</p>
+<p><img src="images/1550972648014.png" alt="1550972648014"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>ol<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>&#x6211;&#x662F;li1<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>&#x6211;&#x662F;li2<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>&#x6211;&#x662F;li3<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>&#x6211;&#x662F;li4<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span>&#x6211;&#x662F;li5<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>ol<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token keyword">var</span> ol <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;ol&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 1. firstChild &#x7B2C;&#x4E00;&#x4E2A;&#x5B50;&#x8282;&#x70B9; &#x4E0D;&#x7BA1;&#x662F;&#x6587;&#x672C;&#x8282;&#x70B9;&#x8FD8;&#x662F;&#x5143;&#x7D20;&#x8282;&#x70B9;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ol<span class="token punctuation">.</span>firstChild<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ol<span class="token punctuation">.</span>lastChild<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 2. firstElementChild &#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x5B50;&#x5143;&#x7D20;&#x8282;&#x70B9; ie9&#x624D;&#x652F;&#x6301;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ol<span class="token punctuation">.</span>firstElementChild<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ol<span class="token punctuation">.</span>lastElementChild<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 3. &#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x7684;&#x5199;&#x6CD5;  &#x65E2;&#x6CA1;&#x6709;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#x53C8;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x5B50;&#x5143;&#x7D20;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ol<span class="token punctuation">.</span>children<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ol<span class="token punctuation">.</span>children<span class="token punctuation">[</span>ol<span class="token punctuation">.</span>children<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="45-&#x6848;&#x4F8B;&#xFF1A;&#x65B0;&#x6D6A;&#x4E0B;&#x62C9;&#x83DC;&#x5355;">4.5. &#x6848;&#x4F8B;&#xFF1A;&#x65B0;&#x6D6A;&#x4E0B;&#x62C9;&#x83DC;&#x5355;</h3>
+<p><img src="images/1550974934894.png" alt="1550974934894"></p>
+<p><img src="images/1550975025608.png" alt="1550975025608"></p>
+<p><img src="images/1550975049176.png" alt="1550975049176"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token comment">// 1. &#x83B7;&#x53D6;&#x5143;&#x7D20;</span>
+    <span class="token keyword">var</span> nav <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;.nav&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> lis <span class="token operator">=</span> nav<span class="token punctuation">.</span>children<span class="token punctuation">;</span> <span class="token comment">// &#x5F97;&#x5230;4&#x4E2A;&#x5C0F;li</span>
+    <span class="token comment">// 2.&#x5FAA;&#x73AF;&#x6CE8;&#x518C;&#x4E8B;&#x4EF6;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> lis<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        lis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onmouseover</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>children<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">&apos;block&apos;</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        lis<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">onmouseout</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>children<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">&apos;none&apos;</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="46-&#x5144;&#x5F1F;&#x8282;&#x70B9;">4.6. &#x5144;&#x5F1F;&#x8282;&#x70B9;</h3>
+<p><strong>&#x4E0B;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x8282;&#x70B9;</strong></p>
+<p><img src="images/1550973538696.png" alt="1550973538696"></p>
+<p><strong>&#x4E0A;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x8282;&#x70B9;</strong></p>
+<p><img src="images/1550973558511.png" alt="1550973558511"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>&#x6211;&#x662F;div<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>&#x6211;&#x662F;span<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;div&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 1.nextSibling &#x4E0B;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x8282;&#x70B9; &#x5305;&#x542B;&#x5143;&#x7D20;&#x8282;&#x70B9;&#x6216;&#x8005; &#x6587;&#x672C;&#x8282;&#x70B9;&#x7B49;&#x7B49;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span>nextSibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span>previousSibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 2. nextElementSibling &#x5F97;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x5143;&#x7D20;&#x8282;&#x70B9;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span>nextElementSibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>div<span class="token punctuation">.</span>previousElementSibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<p><strong>&#x4E0B;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x5143;&#x7D20;&#x8282;&#x70B9;&#xFF08;&#x6709;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#xFF09;</strong></p>
+<p><img src="images/1550973610223.png" alt="1550973610223"></p>
+<p><strong>&#x4E0A;&#x4E00;&#x4E2A;&#x5144;&#x5F1F;&#x5143;&#x7D20;&#x8282;&#x70B9;&#xFF08;&#x6709;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#xFF09;</strong></p>
+<p><img src="images/1550973630150.png" alt="1550973630150"></p>
+<p><img src="images/1550973722805.png" alt="1550973722805"></p>
+<p><img src="images/1550973799759.png" alt="1550973799759"></p>
+<pre><code class="lang-js"><span class="token keyword">function</span> <span class="token function">getNextElementSibling</span><span class="token punctuation">(</span><span class="token parameter">element</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> el <span class="token operator">=</span> element<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>el <span class="token operator">=</span> el<span class="token punctuation">.</span>nextSibling<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>el<span class="token punctuation">.</span>nodeType <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> el<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="47-&#x521B;&#x5EFA;&#x8282;&#x70B9;">4.7. &#x521B;&#x5EFA;&#x8282;&#x70B9;</h3>
+<p><img src="images/1550975514321.png" alt="1550975514321"></p>
+<h3 id="48-&#x6DFB;&#x52A0;&#x8282;&#x70B9;">4.8. &#x6DFB;&#x52A0;&#x8282;&#x70B9;</h3>
+<p><img src="images/1550975640170.png" alt="1550975640170"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>ul<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>li<span class="token operator">&gt;</span><span class="token number">123</span><span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token comment">// 1. &#x521B;&#x5EFA;&#x8282;&#x70B9;&#x5143;&#x7D20;&#x8282;&#x70B9;</span>
+    <span class="token keyword">var</span> li <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&apos;li&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 2. &#x6DFB;&#x52A0;&#x8282;&#x70B9; node.appendChild(child)  node &#x7236;&#x7EA7;  child &#x662F;&#x5B50;&#x7EA7; &#x540E;&#x9762;&#x8FFD;&#x52A0;&#x5143;&#x7D20;</span>
+    <span class="token keyword">var</span> ul <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;ul&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ul<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>li<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 3. &#x6DFB;&#x52A0;&#x8282;&#x70B9; node.insertBefore(child, &#x6307;&#x5B9A;&#x5143;&#x7D20;);</span>
+    <span class="token keyword">var</span> lili <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&apos;li&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ul<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>lili<span class="token punctuation">,</span> ul<span class="token punctuation">.</span>children<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 4. &#x6211;&#x4EEC;&#x60F3;&#x8981;&#x9875;&#x9762;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5143;&#x7D20; &#xFF1A; 1. &#x521B;&#x5EFA;&#x5143;&#x7D20; 2. &#x6DFB;&#x52A0;&#x5143;&#x7D20;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre>
+<h3 id="49-&#x6848;&#x4F8B;&#xFF1A;&#x7B80;&#x5355;&#x7248;&#x53D1;&#x5E03;&#x7559;&#x8A00;">4.9. &#x6848;&#x4F8B;&#xFF1A;&#x7B80;&#x5355;&#x7248;&#x53D1;&#x5E03;&#x7559;&#x8A00;</h3>
+<p><img src="images/1550975849302.png" alt="1550975849302"></p>
+<p><img src="images/1550975887017.png" alt="1550975887017"></p>
+<pre><code class="lang-js"><span class="token operator">&lt;</span>body<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>textarea name<span class="token operator">=</span><span class="token string">&quot;&quot;</span> id<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>textarea<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button<span class="token operator">&gt;</span>&#x53D1;&#x5E03;<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>ul<span class="token operator">&gt;</span>
+
+    <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+        <span class="token comment">// 1. &#x83B7;&#x53D6;&#x5143;&#x7D20;</span>
+        <span class="token keyword">var</span> btn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;button&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> text <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;textarea&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> ul <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">&apos;ul&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 2. &#x6CE8;&#x518C;&#x4E8B;&#x4EF6;</span>
+        btn<span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>text<span class="token punctuation">.</span>value <span class="token operator">==</span> <span class="token string">&apos;&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">&apos;&#x60A8;&#x6CA1;&#x6709;&#x8F93;&#x5165;&#x5185;&#x5BB9;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment">// console.log(text.value);</span>
+                <span class="token comment">// (1) &#x521B;&#x5EFA;&#x5143;&#x7D20;</span>
+                <span class="token keyword">var</span> li <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&apos;li&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// &#x5148;&#x6709;li &#x624D;&#x80FD;&#x8D4B;&#x503C;</span>
+                li<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> text<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+                <span class="token comment">// (2) &#x6DFB;&#x52A0;&#x5143;&#x7D20;</span>
+                <span class="token comment">// ul.appendChild(li);</span>
+                ul<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>li<span class="token punctuation">,</span> ul<span class="token punctuation">.</span>children<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">&gt;</span>
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../../files/dom_bom/day01/dom_day01.html" class="navigation navigation-prev " aria-label="Previous page: API、DOM、元素对象、事件"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../../files/dom_bom/day03/dom_day03.html" class="navigation navigation-next " aria-label="Next page: 节点操作、创建元素、事件高级"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../../gitbook/app.js"></script>
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-hide-element/plugin.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-back-to-top-button/plugin.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-code/plugin.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"hide-element":{"elements":[".gitbook-link"]},"theme-default":{"showLevel":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"toggle-chapters":{},"back-to-top-button":{},"code":{"copyButtons":true},"advanced-emoji":{"embedEmojis":false},"splitter":{},"emphasize":{},"prism":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book JavaScript阶段笔记 -->
+</html>

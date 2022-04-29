@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fn() {
+				var num = 10;
+
+				function fn1(n) {
+					num = n;
+					return num;
+				}
+				return fn1;
+			}
+			var f = fn();
+			console.log(f(13));
+			f = null;//此时闭包就消亡了
+			// 闭包产生的时间：内部函数被声明的时候
+		</script>
+	</body>
+</html>

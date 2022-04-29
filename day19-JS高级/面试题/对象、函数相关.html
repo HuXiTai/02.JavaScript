@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a;
+			var obj1;
+			var obj2;
+			var obj3;
+			
+			a = {};
+			obj1 = {
+			    m: 2
+			} 
+			obj2 = {
+			    n: 2
+			}
+			obj3 = function() {};
+			
+			a[obj1] = 4; //{Object;Object} = 4;
+			a[obj2] = 5; //{Object;Object} = 5;
+			a.name = 'kobe';
+			a[obj3] = 6; //function(){} = 6
+			
+			console.log(a[obj1]); //5
+			console.log(a); //{Object;Object} : 5
+							//name:"kobe"
+							//function(){} : 6
+			console.log("---------------------");
+			function add(a,b){
+			    return a + b;
+			}
+			var result = add(10,20);
+			console.log(result); //30
+			
+			var fn1 = function(a, b){
+			    return a + b;
+			}
+			console.log(fn1(10, 20)); //30
+			console.log("---------------------");
+			var obj = {
+			    name: '赵丽颖',
+			    age: 32,
+			    eat: function(name, age) {
+			        this.name = name;
+			        this.age = age;
+			        // console.log(this);
+			        console.log(name,age);
+			    }
+			}
+			obj.eat("热巴", 18); //this指向的是obj
+			var newObj = new obj.eat("娜扎", 19); //this指向的是新创建的实例对象
+			console.log(obj); //热巴 18
+			console.log(newObj); //娜扎 19
+			console.log("---------------------");
+			var a = 10;
+			var b = 20;
+			console.log(a); //10
+			function fn(){
+			    var c = 100;
+			    b = 200;
+			    function fn1(){
+			        var d = 300;
+			        console.log(b); //200
+			        console.log(d); //300
+			        console.log(c); //100
+			    }
+			    fn1()
+			}
+			fn();
+			console.log("---------------------");
+		</script>
+	</body>
+</html>

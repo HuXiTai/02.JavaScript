@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 题1
+			// function fn() {
+			// 	console.log(x);
+			// }
+
+			// function show(f) {
+			// 	var x = 20;
+			// 	f();
+			// }
+			// var x = 10;
+			// show(fn);
+
+
+			// 题2
+			function a() {}
+			var a;
+			// 只声明未赋值的变量和函数同名时，函数的优先级更高
+			// 已赋值的变量，变量的优先级更高
+			console.log(typeof a);
+			
+			// 题3:
+			var b;
+			// b是否是window对象的属性
+			if (!(b in window)) {
+			    b = 1;
+			}
+			console.log(b);
+			
+			// 题4：
+			function c(c) {
+			    console.log(c);
+			    var c = 3;
+			}
+			var c;
+			c = 1; 
+			// c(2);//报错
+			
+			
+			// 题4
+			var fn;
+			fn = function () {
+			    console.log(fn);
+			}
+			fn();
+			
+			
+			var obj;
+			obj = {
+			    fn2: function() {
+			        console.log(fn2);//报错，局部作用域和全局作用域都没有fn2的变量
+			    }
+			}
+			obj.fn2();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj1 = {
+				name: "laoyang",
+				do: function() {
+
+				},
+				score: [10, 20, 30]
+			}
+
+			// 这叫引用传递，将obj2指向obj1指向的内容
+			// var obj2 = obj1;
+			
+			function shadowCopy(obj1){
+				var obj2 = {};
+				for (var k in obj1) {
+					obj2[k] = obj1[k];
+				}
+				return obj2;
+			}
+			var obj2 = shadowCopy(obj1);
+			
+			console.log(obj2);
+			console.log(obj2 === obj1); //false
+
+			// 以下都为true
+			console.log(obj1["name"] === obj2["name"]);
+			console.log(obj1["do"] === obj2["do"]);
+			console.log(obj1["score"] === obj2["score"]);
+		</script>
+	</body>
+</html>

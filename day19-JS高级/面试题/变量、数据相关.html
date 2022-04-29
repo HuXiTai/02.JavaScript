@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1:
+			var a;
+			var b;
+			a = {n:1};
+			b = a;
+			a.x = a = {n:2};
+			console.log(a.x); //undifined
+			console.log(b.x); //object{n:2}
+			console.log("---------------------");
+			//2:
+			console.log([] == []); //false
+			console.log([] == ![]); //true
+			console.log("---------------------");
+			//3:
+			var b1 = {
+			    b2:[2,'atguigu',console.log],
+			    b3:function () {
+			        alert('hello');
+			    }
+			}
+			
+			console.log(b1,b1.b2,b1.b3); //打印b1对象,打印b2数组,打印b3方法
+			console.log(b1 instanceof Object,typeof b1); //true,Object
+			console.log(b1.b2 instanceof Array,typeof b1.b2); //true,Object
+			console.log(b1.b3 instanceof Function,typeof b1.b3); //true,Function
+			console.log(typeof b1.b2[2]); //Function
+			b1.b2[2](b1.b2[1]); //atguigu
+			console.log("---------------------");
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Father(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			Father.prototype.money = 1000;
+			Father.prototype.getMoney = function(){
+				console.log("500");
+			}
+
+			function Son(name, age, score) {
+				Father.call(this, name, age);
+				this.score = score;
+			}
+			
+			
+			// 通过原型继承
+			Son.prototype = new Father();
+			Son.prototype.constructor = Son;
+			
+			// 父构造函数有getMoney方法，子构造函数写一个同样的方法，这叫重写
+			Son.prototype.getMoney = function(){
+				console.log("son earn some money");
+			}
+			
+			// console.log(Son.prototype.__proto__.constructor);
+			var son = new Son("zs",18,100);
+			console.log(son.money);//可以访问父构造函数原型对象里的属性
+			
+			//可以调用父构造函数原型对象里的方法，但是子构造函数重写以后，调用的是自己的构造函数的方法
+			son.getMoney();
+			
+			
+		</script>
+	</body>
+</html>

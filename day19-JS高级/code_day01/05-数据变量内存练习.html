@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 题1 
+			function A(a) {// a = 1
+				A = function(b) {// b = 2
+					var re = a + b;
+					console.log(re);
+				}
+			}
+			A(1);//调完后A指向A函数内部的A
+			A(2);//调用的是里面的A
+			
+			//题2
+			var o1 = {
+			    m: 1
+			}
+			var o2 = o1;
+			o2.m = 2;
+			console.log(o1.m, o1 === o2);// 2 true
+			
+			// 题3
+			var o3 = {
+			    m: 3
+			}
+			//o3和o4的地址值是一样的
+			var o4 = o3;
+			//直接把o3保存的地址值改变了，不会影响o4
+			o3 = {
+			    m: 4
+			}
+			console.log(o4.m, o4 === o3); 
+			
+			
+			// 题4
+			var o5 = {
+			    m: 5
+			};
+			var o6 = o5;
+			function fn(obj) {
+			    obj = {
+			        m: 6
+			    };
+			}
+			fn(o5)
+			console.log(o5.m, o6.m, o6 === o5);
+			
+			
+			// 题5
+			var o5 = {
+			    m: 5
+			};
+			var o6 = o5;
+			function fn(obj) {
+			    obj.m = 6
+			}
+			fn(o5);
+			console.log(o5.m, o6.m, o6 === o5);
+		</script>
+	</body>
+</html>

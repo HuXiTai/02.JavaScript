@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fn(){
+				var num = 0;
+				function fn1(){
+					num++;
+					console.log(num);
+				}
+				return fn1;
+			}
+			
+			var f = fn();
+			f();//1
+			f();//2
+			f();//3
+			var f = fn();
+			f();//1
+			f();//2
+			
+			f = null;//将内部函数的引用置空，此时外部函数占用的空间就会被释放
+			console.log("-----------------");
+			
+			function add(){
+			    var a = 0;
+			    a++;
+			    console.log(a);
+			}
+			
+			add();
+			add();
+		</script>
+	</body>
+</html>

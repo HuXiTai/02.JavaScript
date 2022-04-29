@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function getMoney() {
+				console.log("---1---");
+				return 1;
+			}
+
+			function getMoney(a) {
+				console.log("---2---");
+				return a;
+			}
+
+			function getMoney(a, b) {
+				console.log("---3---");
+				return a + b;
+			}
+			// 当我们在js里定义多个同名函数的时候，后定义的函数会将前面定义的函数覆盖。
+			// 我们调用的始终是最后一个。所以js里没有真正意义的重载的，但在java里有重载。
+			// console.log(getMoney());
+
+
+			function Father(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			// 直接给Father的原型对象添加两个eat方法，后面的会把前面的覆盖掉。
+			// Father.prototype.eat = function() {
+			// 	console.log("eat noodle");
+			// }
+			// Father.prototype.eat = function(args) {
+			// 	console.log("eat " + args);
+			// }
+
+			// js里实现重载
+			Father.prototype.eat = function() {
+				var food;
+				if (arguments.length === 0) {
+					food = "noodle";
+				} else if (arguments.length === 1) {
+					food = arguments[0];
+				}
+				console.log("eat " + food);
+			}
+
+			var father = new Father("zs", 33);
+			father.eat();
+			
+		</script>
+	</body>
+</html>

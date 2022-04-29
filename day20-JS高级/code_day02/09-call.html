@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fn(a, b) {
+				console.log(this, a + b);
+			}
+
+			// fn.call();//window
+			// fn.call(1,2,3);//Number
+			// fn.call("a",1,2);//String
+			// fn.call(true,1,2);//Boolean
+			// fn.call(null,1,2);//window
+			// fn.call(undefined,1,2);//window
+			// fn.call(window,1,2);//window
+			// fn.call(function(){},1,2);//function(){}
+			// fn.call([1,2],1,2);//[1,2]
+			// fn.call(new Date(),1,2);//Sat Nov 13 2021 15:56:07 GMT+0800 (中国标准时间)时间对象
+			// fn.call({name:"zs"},1,2);//{name:"zs"}
+
+			// 总结：
+			// 参数为空、null、undefined、window-->this指向window
+			// 基本数据类型-->this指向包装对象
+			// 对象-->this指向该对象
+		</script>
+	</body>
+</html>

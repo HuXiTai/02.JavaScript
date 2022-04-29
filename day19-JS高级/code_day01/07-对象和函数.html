@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a;
+			var obj1;
+			var obj2;
+			var obj3;
+
+			a = {};
+			obj1 = {
+				m: 2
+			}
+			obj2 = {
+				n: 2
+			}
+			obj3 = function() {};
+
+			a[obj1] = 4; //a['[object Object]'] = 4
+			a[obj2] = 5; //a['[object Object]'] = 5,修改上一个属性的值
+			a.name = 'kobe'; //a.name = 'kobe';
+			a[obj3] = 6; //a['function() {}'] = 6
+
+			console.log(a[obj1]); //5
+			console.log(a); //object Object  name  function(){}
+
+
+			// 创建函数的方式
+			// 函数关键字的方式
+			function fn() {
+				console.log("函数关键字的方式");
+			}
+			fn();
+
+			// 函数字面量的方式
+			var fn = function() {
+				console.log("函数字面量的方式");
+			}
+			fn();
+
+			console.log(fn instanceof Function);
+
+			// 创建函数的第三种方式，通过new关键字创建函数
+			var fn = new Function("a", "b", "var c = a+b;c*=2;console.log(c);return c;");
+			console.dir(fn);
+			var res = fn(10, 20);
+			console.log(res);
+			
+			console.log("--------------------------");
+			
+			var obj = {
+			    name: '赵丽颖',
+			    age: 32,
+			    eat: function(name, age) {
+			        this.name = name;
+			        this.age = age;
+			    }
+			}
+			obj.eat("热巴", 18);//this指向obj
+			console.log(obj);
+			
+			var new_obj = new obj.eat("娜扎", 19);//this指向new_obj
+			console.log(new_obj);
+			console.log(obj);
+		</script>
+	</body>
+</html>

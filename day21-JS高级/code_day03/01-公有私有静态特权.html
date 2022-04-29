@@ -1,0 +1,63 @@
+		<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function A(name) {
+				// name是公有属性
+				this.name = name;
+
+				// 私有属性,外部访问不到的属性
+				var age = 18;
+				// 私有方法，外部不能调用的方法
+				function dance() {
+					console.log(age);
+					console.log("---dance---");
+				}
+				dance();
+
+				// 特权方法，不同的属性定义相同功能的不同方法,存储在实例对象上
+				this.eat = function() {
+					console.log("---" + this.name + " eat---");
+				}
+			}
+			
+			// 公有方法
+			A.prototype.sing = function() {
+				console.log("---sing---");
+			}
+			
+			// 静态属性
+			A.sex = "man";
+			// 静态方法
+			A.run = function(){
+				// this指向的是A对象
+				console.log(this.name +" run");
+			}
+
+
+			var a1 = new A("ldh");
+			console.log(a1.name);
+			var a2 = new A("zxy");
+			console.log(a2.name);
+			a1.sing();
+			a2.sing();
+			console.log(a1.sing === a2.sing);
+			// 私有属性外面不能直接访问到
+			console.log(a1.age);
+			// 特权方法为属性所特有的，不同的对象方法不同
+			a1.eat();
+			a2.eat();
+			console.log(a1.eat === a2.eat);
+			console.dir(a1);
+			
+			// 访问静态属性和静态方法
+			console.dir(A);
+			console.log(A.sex);
+			A.run();
+		</script>
+	</body>
+</html>

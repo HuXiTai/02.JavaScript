@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 每一句js代码后面都要写分号
+			// 变量的声明，var 变量名;
+			var age;
+			// 变量的赋值,变量名 = 数据，等号表示赋值，把等号右边的数据赋值给等号左边的变量。
+			age = 10;
+			// 此时内存中就有了age这个变量，这个变量保存的是10这个数据。
+			// alert(age); //10
+
+			// 变量赋值的简写，使用较多，var 变量名 = 数据。当我们的数据不是纯数字，有字母的时候，我们的数据要加引号（单双引号都行）。
+			// 加了引号就是数据，不加引号就是变量。
+			var name = "zhangsan";
+
+			// 变量的更新:重新对已有的变量赋值，就是在修改变量保存的值,之前保存的值不再保存。
+			// 变量名在内存中是唯一的，变量名和变量保存的数据是一一对应的关系。注意：不同的变量可以保存相同的数据。
+			age = 11;
+			// alert(age); //11
+
+			// 变量赋值的其他情况
+			// 1、同时声明多个变量并赋值
+			var a = 1,
+				b = 2,
+				c = 3; //等同于var a = 1;var b = 2; var c = 3;
+
+			// 2、只声明不赋值,变量的值是undefined
+			var num;
+			// alert(num);//undefined
+
+			// 3、只赋值不声明,可以正常打印，但是和加var是有区别的，在定义变量的时候还是要加var。
+			s = 11;
+			// alert(s);// 11
+
+			// 4、不声明不赋值
+			// Uncaught ReferenceError: f is not defined,引用异常：f没有被定义
+			alert(f); // 报错
+
+			// 5、连等赋值 
+			var d = e = g = 3; //等同于var d = 3;e = 3;g = 3;
+		</script>
+	</body>
+</html>

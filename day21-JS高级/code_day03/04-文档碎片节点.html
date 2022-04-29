@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<button type="button" id="btn">点击添加li</button>
+		<ul id="list"></ul>
+
+		<script type="text/javascript">
+			var btn = document.querySelector("#btn");
+			var list = document.querySelector("#list");
+
+			btn.onclick = function(e) {
+				var fragment = document.createDocumentFragment();
+
+				for (var i = 0; i < 200; i++) {
+					var li = document.createElement("li");
+					li.innerHTML = "li-" + i;
+					// 将创建的li元素添加到碎片节点里
+					fragment.appendChild(li);
+				}
+				// console.log(fragment);
+				list.appendChild(fragment);
+			}
+		</script>
+	</body>
+</html>

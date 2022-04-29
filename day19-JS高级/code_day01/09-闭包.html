@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 闭包作用：扩展变量/函数的作用域，让外部可以访问函数内部的局部变量或调用内部的局部函数。 
+			// 函数外部可以读取函数内部的变量
+			// function fn() {
+			// 	var num = 10;
+			// 	function fn1(){
+			// 		console.log(num);
+			// 		return num;
+			// 	}
+			// 	return fn1;
+			// }
+
+			// var f = fn();//f-->fn1
+			// var res = f();
+			// console.log(res);
+
+			// function fn(){
+			// 	var num = 10;
+			// 	function fn1(){
+			// 		console.log(num);
+			// 		return num;
+			// 	}
+			// 	return fn1;
+			// }
+			// var f = fn();
+			// var res = f();
+			// console.log(res);
+
+			console.log("----------------");
+			// 函数外部可以改变函数内部变量的值
+			function fn() {
+				var num = 10;
+
+				function fn1(n) {
+					num = n;
+					return num;
+				}
+				return fn1;
+			}
+			var f = fn();
+			// console.log(f(13)); //13
+
+
+			// 利用闭包自定义模块
+			// function myMoney() {
+			// 	var money = 1000;
+
+			// 	function getMoney() {
+			// 		return money;
+			// 	}
+
+			// 	function setMoney(m) {
+			// 		money += m;
+			// 	}
+
+			// 	// return [setMoney, getMoney];
+			// 	return {
+			// 		set: setMoney,
+			// 		get: getMoney
+			// 	};
+			// }
+
+			// function myMoney() {
+			// 	var money = 1000;
+
+			// 	function getMoney() {
+			// 		return money;
+			// 	}
+
+			// 	function setMoney(num) {
+			// 		money += num;
+			// 	}
+			// 	return {
+			// 		get:getMoney,
+			// 		set:setMoney
+			// 	};
+			// }
+			
+			// var money = myMoney();
+			// var a = money.get()
+			// console.log(a);
+			// money.set(1000);
+			// var a = money.get()
+			// console.log(a);	
+			
+			
+
+			// var money = myMoney();
+			// 当返回数组时
+			// console.log(money[1]());
+			// money[0](2000);
+			// console.log(money[1]());
+
+			// 当返回对象时,可读性强，使用较多
+			// console.log(money.get());
+			// money.set(1000);
+			// console.log(money.get());
+
+
+
+
+			// 立即调用函数表达式
+			(function() {
+				//匿名函数定义闭包实现自定义的模块
+				var money = 10000000;
+
+				function getMoney() {
+					console.log(money);
+				}
+
+				function setMoney(data) {
+					money += data;
+				}
+
+				window.getMoney = getMoney;
+				window.setMoney = setMoney;
+			})();
+			// console.dir(window);
+			getMoney(); //10000000
+			setMoney(10); 
+			getMoney(); //10000010
+			
+		</script>
+	</body>
+</html>

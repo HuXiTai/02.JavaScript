@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = "abc";
+			// var str = new String(str);//方式一
+			// var str = new Object(str);//方式二
+			var str = Object(str);//方式三
+			
+			// var str = String(str);//将其他数据类型转换为字符串类型
+			console.log(str.length);
+			console.dir(typeof str);//Object
+			console.dir(str);
+			// console.dir(String instanceof Function)
+			
+			console.log("---------------------");
+			
+			// var num = new Number(1);
+			// var num = new Object(1);
+			var num = Object(1);
+			
+			console.dir(typeof num);
+			console.dir(num);
+			
+			// Number函数：将其他数据类型转Number类型
+			// 字符串里全是数字的可以转，有字母的返回NaN;true转1，false转0；
+			// 对象和数组返回NaN,空数组返回0;null转0，undefined返回NaN。
+			var val = Number(undefined);
+			console.log(val);
+			
+			console.log("---------------------");
+			
+			// var bool = new Boolean(true);
+			// var bool = new Object(true);
+			var bool = Object(true);
+			console.log(bool);
+			console.log(bool.toString());
+			
+			// Boolean函数用于将其他类型转Boolean
+			// 转换规则：0转false，非0转true；空字符串转false，非空字符串转true；
+			// js对象全部转true,null和undefined转false。
+			// var val = Boolean(undefined);
+			// console.log(val);
+		</script>
+	</body>
+</html>

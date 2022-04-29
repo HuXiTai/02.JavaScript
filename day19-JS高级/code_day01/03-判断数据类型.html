@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// typeof 
+			console.log(typeof 1);
+			console.log(typeof "1");
+			console.log(typeof true);
+			console.log(typeof undefined);
+			console.log(typeof Symbol());
+			console.log(typeof 1n);
+			console.log(typeof console.log);
+			console.log("----------------");
+			var 
+			// console.log();
+
+			// instanceof
+			// console.log([1] instanceof Array);
+			// console.log(console.log instanceof Function);
+			// console.log(/\s/ instanceof RegExp);
+			// console.log({} instanceof Object);
+
+			// object.toString()
+			// console.log({}.toString());//调用的是Object原型对象的toString
+			// console.log([1,2].toString());//调用的是Array原型对象的toString
+			// console.log(console.log.toString());//调用的是Function原型对象的toString
+			// console.dir(Array);
+			// console.dir(Function);
+
+			// 目的：让不同的对象类型都调用Object的toString
+			console.log(Object.prototype.toString.call([]));
+			console.log(Object.prototype.toString({}));
+			console.log(Object.prototype.toString.call(console.log));
+			console.log(Object.prototype.toString.call(1));
+			console.log(Object.prototype.toString.call("1"));
+			console.log(Object.prototype.toString.call(true));
+			console.log(Object.prototype.toString.call(null));
+			console.log(Object.prototype.toString.call(undefined));
+			console.log(Object.prototype.toString.call(1n));
+			console.log(Object.prototype.toString.call(Symbol()));
+			console.log(Object.prototype.toString.call(/\s/));
+			console.log(Object.prototype.toString.call(new Date()));
+
+			// 封装一个能返回特定数据类型的函数
+			function getType(val) {
+				return Object.prototype.toString.call(val).slice(8, -1).toLowerCase();
+			}
+
+			console.log(getType(1));
+			console.log(getType("1"));
+			console.log(getType(1n));
+		</script>
+	</body>
+</html>

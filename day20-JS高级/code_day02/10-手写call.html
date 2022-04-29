@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			
+			//1:在Function的原型添加一个newCall方法，传一个context参数
+			//2:判断参数:
+			// 参数为空、null、undefined、window-->this指向window
+			// 基本数据类型-->this指向包装对象
+			// 对象-->this指向该对象
+			//3:获得其他的参数:var args =
+			//4:取一个防重名的名字key
+			//5:context[key] = this
+			//6:执行其他的参数
+			//delete context[key];
+
+			Function.prototype.myCall = function(context) {
+				if (context === null || context === undefined) {
+					context = window;
+				} else if (typeof context !== "object" && typeof context !== "function") {
+					context = Object(context);
+				}
+
+				// 参数的问题：
+				var args = Array.from(arguments).slice(1).toString(); //1,2
+				// console.log(args);
+
+				// 我们要调用的函数是this
+				// context.this()
+				// 给context添加this方法,key为根据当前时间戳转换为36进制的值，目的是避免和现有的属性或方法重名。
+				var key = Date.now().toString(36);
+				// 把fn设置为context的方法，key变量保存的值为fn的方法名
+				context[key] = this; //this目前指向的是fn
+				// 执行context[key](1,2);eval函数的目的是执行参数(字符串格式)里表示的代码。
+				eval("context[key](" + args + ")");
+
+				// 因为方法已经调用过了，删掉该方法
+				delete context[key];
+			}
+
+
+			function fn(a, b) {
+				console.dir(this);
+				console.log(a + b);
+			}
+
+			// fn.call({}, 1, 2); //fn里的this指向{}
+
+			// fn.myCall({
+			// 	name: "zs"
+			// }, 1, 2);
+
+			// fn.myCall(1,2,3);
+
+			fn.myCall([1, 2], 3, 4);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 案例1
+			// var a;
+			// var b;
+			// a = {n:1};
+			// b = a;
+			// a.x = a = {n:2};
+			// // 连等赋值的情况下属性赋值的优先级更高
+			// // a.x = {n:2}
+			// // a = {n:2}
+			// console.log(a.x);
+			// console.log(b.x);
+			
+			
+			// 案例2
+			// 当对象和Boolean类型的值比较时会都转换为Number类型进行比较
+			console.log([] == []);//f
+			console.log([] == ![]);//[] == false-->0 == 0
+			
+			console.log([] == false);//t
+			console.log(![] == false);//t
+			console.log("" == 0);//t
+			
+			console.log("----------------------------");
+			
+			// 案例3
+			var a = Object(1);//obj
+			var b = new Object(1);//obj
+			var c = Number(1);//类型转换函数 c = 1
+			
+			console.dir(a);//Number类型的包装对象
+			console.dir(b);//Number类型的包装对象
+			console.log(a == c);//t
+			console.log(b == c);//t
+			console.log(a == b);//f,a和b是两个对象
+			
+			//两个对象，只有这样的情况才会相等
+			var d = a;
+			console.log(a === d);
+			
+			
+			// 案例4
+			var b1 = {
+			    b2:[2,'atguigu',console.log],
+			    b3:function () {
+			        alert('hello');
+			    }
+			}
+			
+			console.log(b1,b1.b2,b1.b3);
+			console.log(b1 instanceof Object,typeof b1);
+			console.log(b1.b2 instanceof Array,typeof b1.b2);
+			console.log(b1.b3 instanceof Function,typeof b1.b3);
+			console.log(typeof b1.b2[2]);
+			b1.b2[2](b1.b2[1]);
+		</script>
+	</body>
+</html>

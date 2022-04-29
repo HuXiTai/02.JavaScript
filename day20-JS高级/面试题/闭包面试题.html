@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			 var name = "The Window";
+			   var object = {
+			     name: "My Object",
+			     getNameFunc: function() {
+			         return function() {
+			             return this.name; //this指向window
+			          };
+			   }
+			 };
+			console.log(object.getNameFunc()()); //The Window
+			//-------------------------------------------------------------------------------
+			var name = "The Window";　　
+			var object = {　　　　
+			    name: "My Object",
+			    getNameFunc: function() {
+			        var that = this; //that = object
+			        return function() {
+			            return that.name; //object.name
+			        };
+			    }
+			};
+			console.log(object.getNameFunc()()); //My Object
+			console.log("---------------------");
+			function fun(n, o) {
+			    console.log(o);
+			    return {
+			        fun: function(m) {
+			            return fun(m, n);
+			        }
+			    }
+			}
+			// 以下该怎么打印？
+			var a = fun(0); //undefined
+			//没错都相当于重新创建了一个闭包，
+ 			a.fun(1); //0 
+			a.fun(2); //0
+			a.fun(3); //0
+			
+			// 如果换成以下写法呢？
+			// 有点类似于递归调用每次调用都在一个闭包里面，所以值累加
+			var b = fun(0).fun(1).fun(2).fun(3);
+			//undefined
+			//0
+			//1
+			//2
+			console.log("---------------------");
+			function Foo() {
+			    getName = function() {
+			        alert(1);
+			    };
+			    return this;
+			}
+			
+			function getName() {
+			    alert(5);
+			}
+			
+			Foo.getName = function() {
+			    alert(2);
+			};
+			
+			Foo.prototype.getName = function() {
+			    alert(3);
+			};
+			
+			getName = function() {
+			    alert(4);
+			};
+			
+			Foo.getName(); //2
+			getName(); //4
+			Foo().getName(); //1
+			getName(); //1
+			
+			
+			new Foo.getName(); //2
+			new Foo().getName(); //3
+			new new Foo().getName(); //3
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+				console.log()会将输出的数据类型都变为小写，实际上，数据类型首字母是大写。
+			 */
+			var age = 10;
+			console.log(age);// 10
+			// typeof 变量名 查看当前变量所保存的数据的类型
+			console.log(typeof age);// number
+			
+			console.log("--------------------");
+			
+			var name = "zhangsan";
+			console.log(name);
+			console.log(typeof name);// string
+			
+			console.log("--------------------");
+			
+			var t = true;
+			var f = false;
+			console.log(typeof t);//boolean
+			console.log(typeof f);
+			
+			console.log("--------------------");
+			
+			var sex;
+			console.log(typeof sex);//undefined
+			
+			console.log("--------------------");
+			
+			console.log(typeof null);//object,null是一种特殊的object
+			
+			var obj = {name:"zs"};
+			console.log(typeof obj);//object，复杂数据类型，包括null,function,Array,{}
+		</script>
+	</body>
+</html>

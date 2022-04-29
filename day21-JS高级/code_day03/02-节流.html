@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 单独封装一个节流函数,实现在特定的时间内，指定的函数只能执行一次的功能
+			function throttle(f, delay) {
+				var lastTime = 0;
+
+				return function ff(e) {
+					var time = Date.now();
+					if (time - lastTime < delay) {
+						return;
+					}
+					f.call(this, e);
+					lastTime = time;
+				}
+				// return ff;
+			}
+
+			function fn(e) {
+				console.log("获取可视区域的宽高：", window.innerWidth, window.innerHeight);
+			}
+			// addEventListener的第二个参数必须是一个函数，而不是函数()
+			window.addEventListener("resize", throttle(fn, 1000));
+		</script>
+	</body>
+</html>

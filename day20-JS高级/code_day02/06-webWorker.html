@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var work = new Worker("work.js");
+			// 往分线程发送消息，可以通过参数传递数据
+			work.postMessage(40);
+			work.onmessage = function(e) {
+				console.log("计算的结果是：" + e.data);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj1 = {
+				name: "laowang",
+				do: function() {
+
+				},
+				score: [10, 20, 30],
+				o: {
+					age: 18,
+					sex: "man"
+				}
+			}
+
+			// 判断给定数据的类型并返回类型
+			function checkType(data) {
+				return Object.prototype.toString.call(data).slice(8, -1).toLowerCase();
+			}
+
+			// 封装一个实现深拷贝的函数
+			function deepCopy(obj) {
+				if (checkType(obj) === "object") {
+					var newObj = {};
+				} else if (checkType(obj) === "array") {
+					var newObj = [];
+				} else {
+					return obj;
+				}
+
+				for (var k in obj) {
+					newObj[k] = deepCopy(obj[k]);
+				}
+
+				return newObj;
+			}
+
+			var obj2 = deepCopy(obj1)
+			console.log(obj2);
+			console.log(obj2 === obj1); //false
+			console.log(obj1["score"] === obj2["socre"]); //false
+			console.log(obj1["o"] === obj2["o"]); //false
+		</script>
+	</body>
+</html>

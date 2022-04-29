@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Star(name) {
+				this.name = name;
+			}
+
+			// console.log(new Star("ldh") instanceof Star);//true
+			// console.log(new Star("ldh") instanceof Object);//true
+			// console.log(new Star("ldh") instanceof Function);//false
+			// console.log(Star instanceof Function);//true
+
+			// 封装一个函数，判断obj是否是Type的类型
+			// 如何判断？判断obj的隐式原型对象（隐式原型对象的隐式原型对象...）是否和Type的显式原型对象全等
+			// 如果全等证明obj是Type的类型，如果一直比较到null都不相等，那么就为false。
+			function isInstanceOf(obj, Type) {
+				while (obj) {
+					// 判断obj的隐式原型对象和Type的显式原型对象是否是同一个
+					if (obj.__proto__ === Type.prototype) {
+						return true;
+					}
+					obj = obj.__proto__;
+				}
+				return false;
+			}
+
+			console.log(isInstanceOf(new Star("zxy"), Object));
+			console.log(isInstanceOf(new Star("zxy"), Star));
+			console.log(isInstanceOf(new Star("zxy"), function() {}));
+			console.log(Star instanceof Function);
+
+
+			// if(null){
+			// 	console.log("----");
+			// }
+			// 以上不成立，因为
+			// console.log(Boolean(null));
+		</script>
+	</body>
+</html>

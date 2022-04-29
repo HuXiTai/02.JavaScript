@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fn(a, b) {
+				console.log(this);
+				console.log(a + b);
+			}
+			// bind的特点：改变this指向后返回新的函数
+			// fn.bind(1,2,3)();//Number对象
+			// fn.bind("a",1,2)();//String对象
+			// fn.bind(true,1,2)();//Boolean对象
+
+			// fn.bind(null,1,2)();//window
+			// fn.bind(undefined,1,2)();//window
+			// fn.bind()();//window
+
+			// fn.bind([1,2],3,4)();//[1,2]
+			// fn.bind({name:"zs"},1,2)();//{name:"zs"}
+			// fn.bind(function(){},1,2)();//function(){}
+
+			// 自己实现一个类似bind功能的函数
+			// 函数里的this指向谁，取决于谁在调用，和变量的作用域不一样
+			Function.prototype.myBind = function(context) {
+				// 解析出调用fn的参数，以数组的形式返回
+				var args = Array.from(arguments).slice(1); //[2,3]
+				// this指向fn，将this用_this这个变量保存起来
+				var _this = this;
+				return function() {
+					// _this是外部函数的变量，此时指向fn，我们需要调用它，并且将fn里的this指向context
+					_this.apply(context, args);
+				}
+			}
+
+			// fn.myBind(1, 2, 3)();
+			// fn.myBind([1,2],3,4)();
+			fn.myBind(null, 1, 2)();
+		</script>
+	</body>
+</html>

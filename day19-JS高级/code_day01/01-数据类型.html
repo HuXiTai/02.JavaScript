@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+				数据类型：
+				基本数据类型：Number、String、Boolean、Null、Undefined、Symbol、Bigint
+				
+				复杂数据类型:Object(Object、Array、Function、Math、Date、RegExp)
+			 */
+
+			// 不能给基础数据类型添加属性和方法
+			var str = "abcd";
+			var str = new String(str); //字符串默认不能设置属性和方法，但是转换为包装对象之后是可以的
+			// console.dir(str);
+			str.id = "1";
+			// console.log(str.id); //undefined
+
+			str.eat = function() {
+				// console.log("eat food");
+			}
+			str.eat(); //报错
+
+			// 基础数据类型比较的是值
+			// console.log(str == "abcd"); //两个等号比较的是值，类型可以不一样
+			// console.log("1" === 1); //三个等号比较的是值和类型一起
+
+			// 当数据类型不一致时会进行转换
+			// console.log(5 > true); //将true转为1
+			// console.log(5 > null); //将null转为0
+			
+			
+			
+			
+			// 复杂数据类型
+			var obj1 = {name:"zhangsan"};
+			obj1.age = 18;
+			var obj2 = obj1;
+			// console.log(obj1);
+			// console.log(obj1 === obj2);//对象类型互相比较时比较的是地址
+			
+			var obj3 = {name:"zhangsan",age:18};
+			console.log(obj1 === obj3);//虽然数据一样，但是保存数据的地址不一样
+			
+			//对象和基础数据类型比较时，对象会转换为基础数据类型
+			console.log(new Number(1) == 1);
+			console.log(new String("abc") == "abc");
+		</script>
+	</body>
+</html>

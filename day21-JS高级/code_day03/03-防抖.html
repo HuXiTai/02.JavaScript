@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="ipt">
+
+		<script type="text/javascript">
+			// 写一个防抖函数，实现在一段时间内只执行一次事件，并且是最后一次
+			function debounce(f, delay) {
+				var timer;
+
+				function ff(e) {
+					clearTimeout(timer);
+					// 该函数里的this执行的是ipt对象
+					var _this = this;
+					timer = setTimeout(function() {
+						// 该函数里的this指向window
+						f.call(_this, e);
+					}, delay);
+				}
+				return ff;
+			}
+
+
+			function fn(e) {
+				console.log(this);
+				console.log(e);
+				console.log("开始搜索：" + ipt.value);
+			}
+
+			var ipt = document.querySelector("#ipt");
+			ipt.oninput = debounce(fn, 1000);
+			//1:定义一个高频触发事件和事件处理函数
+			//2:封装一个节流函数debounce,传一个事件处理函数f和间隔时间delay
+			//3:写一个返回函数:先清楚定时器,在设置定时器,改变this指向
+			
+		</script>
+	</body>
+</html>

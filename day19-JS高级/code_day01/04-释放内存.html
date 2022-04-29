@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fn(args){
+				var n = 10;
+				console.log(args,n);
+			}
+			fn(1);
+			
+			var obj = {name:"zhangsan"};
+			var obj = null;
+			// {name:zhangsan}此时就变成了垃圾对象，一段时间后它所占用的内存空间会被垃圾回收器回收
+			
+			var obj1 = {age:18};
+			var obj2 = obj1;
+			obj1 = null;
+			// 此时obj1执行null后，由于obj2还指向{age:18}，所以{age:18}不会被垃圾回收器回收
+			console.log(obj1);
+			console.log(obj2);
+			
+			// 全局变量所保存的数据只有在关闭页面的时候才会被销毁,除非主动设为null
+			// delete obj2;
+			obj2 = null;
+			console.log(obj2);
+		</script>
+	</body>
+</html>
