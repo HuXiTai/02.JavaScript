@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// var age = prompt("请输入您的年龄",58);
+			// console.log(typeof age);//输入了内容，都是string类型，没有输入内容时是null
+			
+			// var res = confirm("点确定或取消");
+			// console.log(res);
+			// console.log(typeof res);//Boolean类型
+			
+			// 数据之间的类型时可以转换的
+			// 转字符串
+			// 1、利用数据.toString()，可以将数字、Boolean类型、对象转字符串
+			// null或者undefined转字符串会报错。
+			
+			// var num  = 10;
+			// var num = 017;
+			// var num = true;
+			// var num = null;
+			// var num = undefined;
+			// var num = {name:"zhangsan"};
+			// console.log(num);
+			// console.log(typeof num);
+			// console.log(num.toString());
+			
+			// 2、String(数据)
+			// 可以将数字、布尔值、对象、null、undefined
+			
+			// var data = 10;
+			// var data = 0x1f;
+			// var data = true;
+			// var data = {name:"zhangsan"};
+			// var data = null;
+			// var data = undefined;
+			// console.log(String(data));
+			// console.log(typeof String(data));
+			
+			// 用 + 拼接字符串叫字符串的隐式转换,null会被转化为"null",undefined会被转化为"undefined"
+			console.log("10" + null);
+			console.log("10" + undefined);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 逻辑运算符：&&(与) ||(或) !(非)
+
+			// 与运算符(&&)连接的多个条件中全部为true，结果才是true
+			console.log(1 > 2);
+			console.log(1 > 2 && 3 > 2); //f && t = f
+			console.log(1 > 2 && 1 > 2); //f && f = f
+			console.log(3 > 2 && 1 > 2); //t && f = f
+			console.log(3 > 2 && 4 > 2); //t && t = t
+
+			console.log("-----------------------");
+
+			// 或运算符(||)连接的多个条件中只要有一个为true，结果就为true 
+			console.log(2 > 1);
+			console.log(2 > 1 || 1 > 2); //t || f = t
+			console.log(0 > 1 || 3 > 2); //f || t = t
+			console.log(0 > 1 || 1 > 2); //f || f = f
+			console.log(2 > 1 || 3 > 2); //t || t = t
+
+			console.log("-------------------------");
+
+			// 可以连接多个条件
+			console.log(3 > 2 && 2 > 1 && 0 > 2);
+			console.log(3 > 2 && 2 > 1 || 0 > 2);
+
+			// 非(!) !true是false，!false是true
+			console.log(!(3 > 2));//!t = f
+			console.log(!(0 > 2));//!f = t
+			console.log(!(3 > 2 && 2 > 1 || 0 > 2));
+			console.log(!false);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 
+				字符串是有长度的，1个汉字，1个符号，1个字母，1个空格，长度都是1。
+				如何获取字符串的长度？字符串.length,返回Number类型的数字。
+			 */
+			// var s = "我爱北京天安门! ";
+			// console.log(s.length);
+
+			// 字符串的拼接
+
+			// +连接两个字符串时，会将这两个字符串连接起来组成一个新的字符串。
+			// var s1 = "我爱" + " " + "北京";
+
+			// 字符串和数字的拼接,它会将数字转化为字符串再做拼接，隐式转换
+			var age = 18;
+			var s2 = "我今年" + 18 + "岁";
+			var s2 = "我今年" + age + "岁";
+			var s3 = 18 + ""; //Number类型的隐式转换
+			console.log(s2);
+			
+			// var s4 = 18 + "2";
+			// var s4 = 18 + 2 + "2";// 先把前面的做相加，再转成字符串和后面的拼接
+			var s4 = "18" + 2 + 2;
+			console.log(s4);
+			console.log(typeof s4);
+		</script>
+	</body>
+</html>

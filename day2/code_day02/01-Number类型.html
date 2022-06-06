@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// console.log()的特点：输出数字的时候，不管是什么进制表示，最后输出都是十进制。
+			
+			// 十进制
+			var a = 10;
+			// console.log(typeof a);
+			
+			var a = 10.5;
+			// console.log(typeof a);
+			
+			
+			// 二进制,以0b开头的数字,后面的数字只能是0或1，否则会报错
+			var b = 0b1011;
+			// console.log(b);
+			// console.log(typeof b);
+			
+			// 八进制,以0开头，后面的数字只能在0-7之间,否则会报错
+			var o = 017;
+			// console.log(o);
+			// console.log(typeof o);
+				
+			// 十六进制数据，以0x开头，后面的数字在0-f范围内
+			var h = 0x1f;
+			// console.log(h);
+			// console.log(typeof h);
+			
+			// js中数值的最大值最小值(了解)
+			console.log(Number.MAX_VALUE);
+			console.log(Number.MIN_VALUE);
+			
+			
+			console.log(Number.MAX_VALUE *2);
+			// 用科学计数法表示的数据也是Number类型
+			console.log(typeof 1.79769313486231581e+308);
+			console.log(5e-324);
+			// 正无穷大加一个负号，就变成了负无穷大，即-Infinity
+			console.log(-1.79769313486231581e+308);
+			
+			// 当声明了一个变量，没赋值时拿这个变量参与计算，得到的结果是NaN,即Not a Number的缩写
+			var n;
+			console.log(n + 1);
+			console.log(typeof NaN);
+			
+			console.log("-------------------------");
+			
+			// isNaN(),判断一个数据是否是非数字，判断之间会先对判断的数据进行转换，转换成数字再判断，是数字返回false，不是数字返回true
+			console.log(isNaN(12));//false
+			// 以上这句话，相当于下面的两句话
+			var res = isNaN(12);
+			// console.log(res);
+			
+			console.log(isNaN("ABC"));//true
+			console.log(isNaN("123"));//false
+		</script>
+	</body>
+</html>

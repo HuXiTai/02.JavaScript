@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Boolean函数,返回值始终是Boolean类型
+			// 1、当参数是字符串时,字符串的长度大于0为true,字符串的长度等于0为false。
+			// var b = Boolean("false");
+
+			// 2、当参数是数字时，数字为0时是false，数字不为0时是true。
+			// var b = Boolean(-1);
+
+			// 3、参数为null和undefined时都是false
+			// var b = Boolean(undefined);
+
+			// 4、参数为Boolean时，true返回true，false返回false
+			// var b = Boolean(false);
+			
+			// 5、参数为对象时,只要有对象，就是true
+			var b = Boolean({});
+			// console.log(typeof {});
+			console.log(b);
+			console.log(typeof b);
+		</script>
+	</body>
+</html>

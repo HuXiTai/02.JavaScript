@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var count = 0;
+			// 对count变量的值更新
+			// var count = count + 1;
+			// var count = count + 1;
+			// 递增,其实就是对以上代码的简化
+			// count++; // count = count + 1;
+			// ++count;
+			// 无论是++count，还是count++，都是对count变量做递增操作
+			// 区别是：count++是先使用再加1(后置递增)，++count是先加1再使用。(前置递增)
+
+			// console.log(count++ + 2);
+			// console.log(count);
+
+			// 思考题：
+			// console.log(++count + count++);
+			// console.log(count);
+			// console.log(count++ + count + ++count);
+
+			var num = count++;
+			console.log("num:" + num);
+			console.log("count:" + count);
+			var num = ++count;
+			console.log("num:" + num);
+			console.log("count:" + count);
+
+			// console.log(num);
+			// console.log(count);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var age;
+			console.log(typeof age); //Undefined
+			console.log("你好" + age); //你好undefined
+			console.log(1 + age); //NaN
+			console.log(true + age); //NaN
+
+			console.log("-----------------");
+			// + 字符串就拼接，不是字符串，转成数字相加
+			
+			var name = null;
+			console.log(name);
+			console.log("你好" + name); //你好null
+			console.log(10 + null);//null转化为数字是0
+			console.log(true + null);
+		</script>
+	</body>
+</html>

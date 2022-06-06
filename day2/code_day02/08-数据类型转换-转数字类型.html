@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 转数字类型
+			// 1、parseInt:对是数字的字符串转换，不能转Boolean、undefined、null以及没有数字的字符串
+			console.log(parseInt("10"));
+			console.log(parseInt("10.99")); //对字符串里是小数的，会将小数省略
+			console.log(parseInt("123abc456")); //NaN
+			console.log(parseInt(true)); //NaN
+			console.log(parseInt(false)); //NaN
+			console.log(parseInt(undefined)); //NaN
+			console.log(parseInt(null)); //NaN
+
+			console.log("------------");
+
+			// 2、parseFloat,可以保留小数位,其他的和parseInt效果一样。
+			console.log(parseFloat("10"));
+			console.log(parseFloat("10.1"));
+			console.log(parseFloat("10.12abc44"));
+			console.log(parseFloat(true));
+
+			console.log("------------");
+
+			// 3、Number，除了undefined会转成NaN，其余的都可以进行转换
+			console.log(Number("10"));
+			console.log(Number("10.5"));
+			console.log(Number("10abc")); //NaN
+			console.log(Number(true)); //1
+			console.log(Number(false)); //0
+			console.log(Number(null)); //0
+			console.log(Number(undefined)); //NaN
+
+			console.log("------------");
+
+			// 4、隐式转换,通过 - * / 运算符，能将数据隐式转换为数字
+			console.log('12' - 0);
+			console.log('12' * 0);
+			console.log('12' / 0); // Infinity
+			console.log(0 / 0); // NaN
+			console.log(false * 5); // 0
+			console.log(null * 1); // 0
+			console.log(undefined * 1); // NaN
+		</script>
+	</body>
+</html>
